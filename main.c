@@ -3,19 +3,11 @@
 
 int main(){
 
+printf("Enter a number for the x : ");
 double basis;
-scanf("Enter a number for the basis >%lf ", &basis );
+scanf("%lf",&basis);
 
-
-double p = Pow(basis,3);
-printf("pow: %0.4lf \n",p);
-double e = Exp(basis);
-printf("Exp: %0.4lf \n",e);
-float a = add(e,p);
-printf("add: %0.4lf \n",a);
-float s = sub(a , 2);
-printf("sub: %0.4lf \n", s);
-
+printf("basis: %lf \n" ,basis);
 float val_f1 = sub(add(Exp(basis),Pow(basis,3)),2);
 printf("The value of the function f(x) = e^x + x^3 - 2 = %0.4lf\n",val_f1);
 float val_f2 = add(mul(basis,3),mul(Pow(basis,2),2));
