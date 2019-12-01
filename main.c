@@ -1,18 +1,63 @@
 #include <stdio.h>
-#include "myMath.h"
+#include "myBank.h"
 
 int main(){
+char t;
+do 
+{  
+	printf("\n\n wELCOME TO THE BANK \n"
+	"O-> Open a new account \n"
+	"B-> Check the current balance \n"
+	"D-> Deposit money \n"
+	"W-> withdraw money \n"
+	"C-> close account \n"
+	"I-> add interest to all the accounts \n"
+	"P-> Presenting aii open accounts \n"
+	"E-> To close all of the accounts and Exit \n \n" );
 
-printf("Enter a number for the x : ");
-double basis;
-scanf("%lf",&basis);
+	
+	if(scanf(" %1c",&t)==1)
+	{
+	switch(t)
+		{
+		case 'O':
+		O();
+		break;
 
-printf("basis: %lf \n" ,basis);
-float val_f1 = sub(add(Exp(basis),Pow(basis,3)),2);
-printf("The value of the function f(x) = e^x + x^3 - 2 = %0.4lf\n",val_f1);
-float val_f2 = add(mul(basis,3),mul(Pow(basis,2),2));
-printf("The value of the function f(x) = 3x + 2x^2 = %0.4lf\n",val_f2);
-float val_f3 = div(mul(Pow(basis,3),4),sub(5,mul(basis,2)));
-printf("The value of the function f(x) = (4x^3)/(5-2x) = %0.4lf\n",val_f3);
+	 	case 'B':
+		B();
+		break;
+	
+		case 'D':
+	        D();
+		break;
+	
+		case 'W':
+		W();
+		break;
+		
+		case 'C':
+		C();
+	        break;
+	
+	        case 'I':
+		I();
+		break; 
+	       
+		case 'P':
+	        P();
+	        break;
+	
+		case 'E':
+		E();
+		break;
+	
+		default :
+		printf("Not legal transaction type, try again \n");
+	        break;
+		} 
+	}
+}while(t != 'E');  
+
 return 0;
 }

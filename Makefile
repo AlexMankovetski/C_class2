@@ -1,31 +1,20 @@
 # -*- Makefile -*-
 
-all: mymaths mymathd mains maind
+all: mains
 
-mains: main.o libmyMath.a
-	gcc -Wall -o mains main.o libmyMath.a
-
-maind: main.o libmyMath.so
-	gcc -Wall -o maind main.o ./libmyMath.so
-
-mymaths: libmyMath.a 
+mains: main.o libmyBank.a
+	gcc -Wall -o mains main.o libmyBank.a
 	
-libmyMath.a: basicMath.o power.o myMath.h
-	ar -rcs libmyMath.a basicMath.o power.o
+libmyBank.a: myBank.o
+	ar -rcs libmyBank.a myBank.o
 
-mymathd: libmyMath.so
-	
-libmyMath.so: basicMath.o power.o myMath.h
-	gcc -shared -o libmyMath.so basicMath.o power.o
-
-main.o: main.c myMath.h
+main.o: main.c myBank.h
 	gcc -Wall -c main.c
 
-power.o: power.c myMath.h
-	gcc -Wall -fPIC -c power.c
+myBank.o: myBank.c myBank.h
+	gcc -Wall -fPIC -c myBank.c
 
-basicMath.o: basicMath.c myMath.h
-	gcc -Wall -fPIC -c basicMath.c
+.PHONY: all clean
 
 clean:
-	rm -f *.o *.a *.so mains maind
+	rm -f *.o *.a mains
